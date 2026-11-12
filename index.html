@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buse Pasta Evi</title>
+<style>
+body{margin:0;background:#fff7fa;font-family:Arial;color:#49343d}
+header{background:white;padding:25px;text-align:center;color:#b94f78}
+h1{margin:0;font-size:28px}
+small{display:block;margin-top:8px}
+main{padding:20px;max-width:600px;margin:auto}
+.welcome{background:#fce8f0;border-radius:20px;padding:22px}
+input{box-sizing:border-box;width:100%;padding:16px;margin:20px 0;border:1px solid #e6b9ca;border-radius:16px;font-size:16px}
+.card{background:white;padding:20px;border-radius:18px;margin:15px 0;box-shadow:0 2px 8px #eee}
+h2,h3{color:#b94f78}
+footer{text-align:center;padding:25px;color:#98677c}
+</style>
+</head>
+<body>
+<header>
+<h1>♡ BUSE PASTA EVİ ♡</h1>
+<small>Tatlı tariflerinin en güzel hali</small>
+</header>
+<main>
+<div class="welcome">
+<h2>Mutfağımıza hoş geldin! ♡</h2>
+<p>Buse'nin seçtiği nefis tarifleri keşfet.</p>
+</div>
+<input id="search" placeholder="🔍 Pasta tarifi ara…">
+<div id="recipes"></div>
+</main>
+<footer>BUSE PASTA EVİ ♡</footer>
+<script>
+const recipes=[
+{title:"Çikolatalı Pasta",category:"Pastalar",
+ingredients:"Kakao, un, yumurta, süt",
+instructions:"Bu tarif yalnızca tasarım denemesi içindir."},
+{title:"Çilekli Pasta",category:"Pastalar",
+ingredients:"Çilek, krema, pandispanya",
+instructions:"Bu tarif yalnızca tasarım denemesi içindir."}
+];
+function show(){
+const q=document.getElementById("search").value.toLocaleLowerCase("tr");
+document.getElementById("recipes").innerHTML=recipes
+.filter(r=>r.title.toLocaleLowerCase("tr").includes(q))
+.map(r=>`<div class="card"><h3>${r.title}</h3><p>${r.category}</p><p>${r.ingredients}</p><p>${r.instructions}</p></div>`).join("");
+}
+document.getElementById("search").addEventListener("input",show);
+show();
+</script>
+</body>
+</html>
